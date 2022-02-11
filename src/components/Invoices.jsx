@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import {getInvoices} from '../data'
 
 const Invoices = () => {
@@ -9,7 +9,14 @@ const Invoices = () => {
       <h1>Invoices</h1>
       {
         Invoices.map(invoice => {
-          return <div key={invoice.number}><Link to={`/invoices/${invoice.number}`}>{invoice.name}</Link></div>;
+          return <div key={invoice.number}><NavLink style={({isActive})=>{
+            return {     
+              textDecoration:"none",
+              display: "block",
+              margin: "1rem 0",
+              color:isActive ? 'red' : 'blue'
+            };
+          }} to={`/invoices/${invoice.number}`}>{invoice.name}</NavLink></div>;
         })
       }
       <Outlet/>

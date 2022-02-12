@@ -40,3 +40,10 @@ let invoices = [
         return invoice.number === number;
     });
   }
+
+
+  export function deleteInvoiceByNumber(number) {
+    invoices = invoices.filter((invoice) => {
+      return invoice.number !== number;
+    });
+  }
